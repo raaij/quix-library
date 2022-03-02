@@ -72,7 +72,8 @@
 		"CpuMillicores": 300,
 		"MemoryInMb": 800,
 		"Replicas": 1,
-		"PublicAccess": false,
+		"PublicAccess": true,
+		"UrlPrefix": "twilio",
 		"ValidateConnection": false
 	}
 }
