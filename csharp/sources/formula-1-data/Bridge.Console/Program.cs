@@ -45,6 +45,8 @@ namespace Bridge.Codemasters.Console
 
                 string streamId = Guid.NewGuid().ToString();
 
+                var x = Int32.Parse(Environment.GetEnvironmentVariable("test"));
+
                 var streamingService = new StreamingService(appConfiguration.Topic,
                     appConfiguration.StreamSettings.IncludeOtherDrivers,
                     streamId

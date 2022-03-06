@@ -20,6 +20,14 @@
             "Description" : "Name of the output topic to write into",
             "DefaultValue" : "f1-data",
             "Required": true
+        },
+		{
+            "Name" : "test",
+            "Type" : "EnvironmentVariable",
+            "InputType" : "FreeText",
+            "Description" : "Test for new connectors",
+            "DefaultValue" : "1",
+            "Required": true
         }
     ],
 	"DeploySettings":
