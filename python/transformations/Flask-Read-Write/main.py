@@ -1,3 +1,4 @@
+from quixstreaming import QuixStreamingClient
 from flask import Flask
 import os
 import requests
@@ -5,6 +6,16 @@ import json
 import time
 from datetime import datetime
 import urllib.parse
+
+
+# Quix injects credentials automatically to the client.
+# Alternatively, you can always pass an SDK token manually as an argument.
+client = QuixStreamingClient()
+
+print("Opening input and output topics")
+input_topic = client.open_input_topic(os.environ["input"], "default-consumer-group")
+output_topic = client.open_output_topic(os.environ["output"])
+
 
 auth_token = '{placeholder:token}'
 
