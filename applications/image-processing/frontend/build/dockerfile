@@ -1,0 +1,6 @@
+FROM node:16
+COPY --from=git /project/source /app
+WORKDIR /app
+RUN npm install
+ENTRYPOINT PORT=80 npm run start
+
