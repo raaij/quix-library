@@ -1,4 +1,4 @@
-from quixstreaming import QuixStreamingClient
+from quixstreaming import QuixStreamingClient, EventData
 from flask import Flask
 import os
 import requests
@@ -18,9 +18,8 @@ output_topic = client.open_output_topic(os.environ["output"])
 
 
 auth_token = '{placeholder:token}'
-
 telemetry_query_base_url = 'https://telemetry-query-{placeholder:workspaceId}.{placeholder:environment.subdomain}.quix.ai/'
-streaming_writer_base_url = 'https://writer-{placeholder:workspaceId}.{placeholder:environment.subdomain}.quix.ai/'
+# streaming_writer_base_url = 'https://writer-{placeholder:workspaceId}.{placeholder:environment.subdomain}.quix.ai/'
 
 app = Flask("Hello Flask I/O")
 
@@ -40,38 +39,31 @@ def hello_world():
 
 @app.route("/write/<stream_id>")
 def write_event(stream_id):
-    # get the input topic
-    topic = os.environ["topic"]
+    # Create a new stream to output data, append the current date time to easily identify it for this demo
+    output_stream = output_topic.create_stream(stream_id + "-" + datetime.now())
+    output_stream.properties.parents.append(stream_id)
 
-    # create the payload to send to the stream
-    # create your own events, this is just an example
-    payload = [{
-            "timestamp": time.time_ns(),
-            "id": "MyEventId",
-            "value": "MyEventValue at {}".format(datetime.now()),
-            "tags": {
-                "tag1": "1",
-                "tag2": "2",
-                "tag3": "3"
-            }}]
+    # build an EventData object and add some tags if needed
+    event_data = EventData("MyEventId",
+                           datetime.now(),
+                           "MyEventValue at {}".format(datetime.now()))\
+        .add_tag("tag1", "1")\
+        .add_tag("tag2", "2")\
+        .add_tag("tag3", "3")
 
-    # generate the URL to use
-    url = "{}topics/{}/streams/{}/events/data".format(streaming_writer_base_url, topic, stream_id)
+    # write the EventData to the output stream
+    output_stream.events.write(event_data)
 
-    # post the payload to the URL
-    result = post(url, payload)
-    print(result.status_code)
-
-    # create a heading for the page and the data
     response = "<p><a href='/'>HOME</a> | <a href='/streams'>Streams</a></p><br/><br/>"
 
     # display the HTTP status code
-    response = response + "{} - {}".format(result.status_code, result.reason)
-    return response
+    response = response + "Event Sent"
+    return response, 200
 
 
 @app.route("/streams")
 def get_streams():
+
     # build the URL
     url = telemetry_query_base_url + "streams"
 
