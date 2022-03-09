@@ -14,7 +14,8 @@
             "Type" : "EnvironmentVariable",
             "InputType" : "OutputTopic",
             "Description" : "Output topic containing unprocessed images from webcam",
-            "DefaultValue" : "image-raw"
+            "DefaultValue" : "image-raw",
+            "Required": true
         }
     ],
 	"EntryPoint": "build/dockerfile",
