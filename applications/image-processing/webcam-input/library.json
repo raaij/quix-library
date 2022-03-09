@@ -7,7 +7,6 @@
       "Complexity": [ "Medium" ],
       "Popular subjects": ["Image Processing"]
     },
-    "sampleTemplate": true,
     "shortDescription": "This project contains webpage which is able to capture image from your webcam",
     "Variables": [ 
         {

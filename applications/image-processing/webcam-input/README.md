@@ -1,15 +1,20 @@
-# QuixTemplate
+# Image processing - Webcam input
 
-This is an empty template for a website hosted using NodeJS express in the Quix serverless environment.
+This is the image processing module which does contain webpage with source from camera.
 
-## Prerequisites
-- NodeJS installed
+## Requirements/prerequisites
 
-## NPM
+In order to make use of this solution you also need to deploy the following projects:
+ - Image processing - Object recognition
+ - Image processing - Frontend
+ - Image processing - Webcam input (this one)
 
-Run `npm install` to download all dependencies.
+## Environment variables
 
-## Running website
+This code sample uses the following environment variables:
 
-Run `node main.js` run server hosted on port 80.
+- **topic_raw**: This output topic will contain image readed from camera
 
+## How to run
+Create an account on [Quix](https://portal.platform.quix.ai/self-sign-up?xlink=github) to edit or deploy this application without a local environment setup.
+ 
