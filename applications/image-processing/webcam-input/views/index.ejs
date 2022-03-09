@@ -26,10 +26,10 @@
         <script>
 
             function sendToQuix(imageBase64){
-                return fetch("https://writer-quixdev-alescamera.dev.quix.ai/topics/camera/streams/input-image/parameters/data",{
+                return fetch("https://writer-<%= env.Quix__Workspace__Id; %>.dev.quix.ai/topics/<%= topic_name; %>/streams/input-image/parameters/data",{
                     method: "POST",
                     headers: {
-                        'Authorization': 'Bearer {}',
+                        'Authorization': 'Bearer <%= env.Quix__Sdk__Token; %>',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({Timestamps: [new Date().getTime()], StringValues: {"image":[imageBase64]}})
@@ -50,7 +50,7 @@
 
             function init(  ) {
 
-                let video;// = document.querySelector("video");
+                let video;
 
                 const refreshSelect = document.getElementById("refreshSelect");
 
