@@ -10,10 +10,6 @@ module.exports = app;
 app.set('view engine', 'ejs');
 app.use('/css', express.static('css'));
 
-console.log("ENV --- ");
-console.log(process.env);
-console.log("ENV --- ");
-
 app.get('/', (req, res) => {
     res.render("index", {
         env: process.env,

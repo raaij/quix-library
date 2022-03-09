@@ -1,5 +1,6 @@
 from quixstreaming import SecurityOptions, QuixStreamingClient, ParameterData, StreamReader
 import time
+import wget
 
 client = QuixStreamingClient()
 
@@ -19,9 +20,13 @@ import sys
 import signal
 import threading
 
+print("-------------------")
+print("DOWNLOADING Weights")
+url = "https://quixstorageaccount.blob.core.windows.net/libraryassets/19519-image-processing-yolov3.weights"
+weightsFilename = wget.download(url)
 
 #Load YOLO Algorithm
-net=cv2.dnn.readNet("yolov3.weights","yolov3.cfg")
+net=cv2.dnn.readNet(weightsFilename,"yolov3.cfg")
 #To load all objects that have to be detected
 classes=[]
 with open("coco.names","r") as f:
