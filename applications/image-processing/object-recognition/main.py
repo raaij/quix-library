@@ -5,7 +5,7 @@ client = QuixStreamingClient()
 
 # for more samples, please see library or docs
 
-output_topic = client.open_output_topic("{placeholder:topic-processed}")
+output_topic = client.open_output_topic("{placeholder:topic_processed}")
 stream = output_topic.create_stream("input-image")
 
 
@@ -97,7 +97,7 @@ def processImage(img):
 
 # img = cv2.imdecode(img, cv2.IMREAD_GRAYSCALE)
 
-input_topic = client.open_input_topic('{placeholder:topic-raw}')
+input_topic = client.open_input_topic('{placeholder:topic_raw}')
 def read_stream(new_stream: StreamReader):
 
     buffer = new_stream.parameters.create_buffer()

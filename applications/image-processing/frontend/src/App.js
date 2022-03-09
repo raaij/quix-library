@@ -9,12 +9,12 @@ function App() {
   const [dataProcessed, changeProcessedData] = useState({});
 
   useEffect(() => {
-    return CreateConnection(changeData, "{placeholder:topic-raw}");
+    return CreateConnection(changeData, "{placeholder:topic_raw}");
   }, [changeData]);
   
 
   useEffect(() => {
-    return CreateConnection(changeProcessedData, "{placeholder:topic-processed}");
+    return CreateConnection(changeProcessedData, "{placeholder:topic_processed}");
   }, [changeProcessedData]);
 
   console.log("element data", data);
