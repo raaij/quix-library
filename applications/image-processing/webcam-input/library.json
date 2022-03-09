@@ -1,6 +1,6 @@
 {
     "libraryItemId": "81cd2592-0e83-4733-bdb0-6710f8dcca04",
-    "name": "IMAGE PROCESSING - Webcam input",
+    "name": "Image processing - Webcam input",
     "language": "NodeJs",
     "tags": {
       "API Usage": [ "Writer API (HTTP)" ],

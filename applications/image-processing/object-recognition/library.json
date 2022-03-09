@@ -1,6 +1,6 @@
 {
     "libraryItemId": "fa8af3c0-fdd3-4ac9-bdb5-f0451378fd2b",
-    "name": "IMAGE PROCESSING - Object detection",
+    "name": "Image processing - Object detection",
     "language": "Python",
     "tags": {
       "API Usage": [ "Write SDK", "Read SDK" ],
