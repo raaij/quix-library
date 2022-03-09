@@ -17,7 +17,7 @@ console.log("ENV --- ");
 app.get('/', (req, res) => {
     res.render("index", {
         env: process.env,
-        topic_name: process.env["topic_raw"].substring( process.env.Quix__Workspace__Id.length )
+        topic_name: process.env["topic_raw"].substring( process.env.Quix__Workspace__Id.length+1 )
     });
 })
 
