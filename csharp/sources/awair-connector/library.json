@@ -34,7 +34,7 @@
     "DeploySettings":
     {
       "DeploymentType": "Service",
-      "CpuMillicores": 100,
+      "CpuMillicores": 101,
       "MemoryInMb": 200,
       "Replicas": 1,
       "PublicAccess": false,
